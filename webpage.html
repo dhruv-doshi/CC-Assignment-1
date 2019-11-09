@@ -1,0 +1,72 @@
+﻿<!DOCTYPE.html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/webpage.css">
+</head>
+<body>
+    <div>
+        <div>
+            <img class="logo" src="./images/logo.svg" />
+        </div>
+        <div class="mode left-col">
+            <img class="upper-img" src="./images/illustration-main.svg" />
+        </div>
+    </div>
+    <div class="text">
+        <div>
+            <section>
+                <a href="#">
+                    <img class="icon" src="images/facebook.png" />
+                </a>
+                <a href="#">
+                    <img class="icon" src="images/twitter.png" />
+                </a>
+            </section>
+        </div>
+        <section>
+            <h2>All your files in one secure location, accessible anywhere.</h2>
+        </section>
+        <section>
+            <p>
+                Fylo stores all your most important files in one secure location. Access them wherever you need, share and collabrate with friends with friends, family and co-workers.
+            </p>
+        </section>
+        <section>
+            <p id="random">
+            </p>
+
+        </section>
+        <div>
+            <input type="text" id="sign" name="sign">
+            <button id="button">Sign up</button>
+        </div>
+
+    </div>
+
+
+<script>
+var postdata = {
+  name: document.getElementById('sign').val
+};
+      var obj = JSON.stringify('postdata');
+function getreq(){
+  let signup = new XMLHttpRequest();
+  signup.open('POST', 'https://reqres.in/api/users', true);
+  signup.onload = function(){
+    if(this.status == 200){
+
+      console.log(this.responseText);
+    //  document.getElementById("random").innerHTML = this.responseText;
+    }
+  }
+  signup.send(obj);
+}
+
+
+
+document.getElementById("button").onclick = getreq;
+</script>
+ </body>
+
+</html>

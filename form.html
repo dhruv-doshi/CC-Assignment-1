@@ -1,0 +1,42 @@
+<!DOCTYPE.html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/webpage.css">
+</head>
+<body>
+  <div>
+    <input type="text" id="username" name="username">
+    <input type="text" id="password" name="password">
+
+
+  </div>
+  <div>
+    <input type="button" value="Put Your Text Here" onclick="getreq()" />
+
+  </div>
+  <script>
+  function getreq(){
+  var postdata = {
+    name: document.getElementById('username').val,
+    job: document.getElementById('password').val
+  };
+        var obj = JSON.stringify('postdata');
+
+    let signup = new XMLHttpRequest();
+    signup.open('POST', 'https://reqres.in/api/users', true);
+    signup.setRequestHeader("Content-type","application/json");
+    signup.onload = function(){
+      if(this.readyState==4 && this.status == 200){
+        console.log(this.responseText);
+      //  document.getElementById("random").innerHTML = this.responseText;
+      }
+    }
+    signup.send(obj);
+  }
+
+
+
+//  document.getElementById("button").onclick = getreq;
+  </script>
+</body>
